@@ -13,6 +13,7 @@
 		36D2B0B5274E8444001CD7C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36D2B0B3274E8444001CD7C5 /* Main.storyboard */; };
 		36D2B0B7274E8448001CD7C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D2B0B6274E8448001CD7C5 /* Assets.xcassets */; };
 		36D2B0BA274E8449001CD7C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36D2B0B8274E8448001CD7C5 /* LaunchScreen.storyboard */; };
+		36D2B0C3274EC808001CD7C5 /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D2B0C2274EC808001CD7C5 /* CalculatorBrain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		36D2B0B6274E8448001CD7C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36D2B0B9274E8448001CD7C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36D2B0BB274E8449001CD7C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36D2B0C2274EC808001CD7C5 /* CalculatorBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,32 @@
 		36D2B0AC274E8444001CD7C5 /* MVC Calculator by Prof.Paul Hegarty */ = {
 			isa = PBXGroup;
 			children = (
-				36D2B0AD274E8444001CD7C5 /* AppDelegate.swift */,
-				36D2B0AF274E8444001CD7C5 /* SceneDelegate.swift */,
+				36D2B0C1274E8450001CD7C5 /* Supporting Files */,
 				36D2B0B1274E8444001CD7C5 /* ViewController.swift */,
 				36D2B0B3274E8444001CD7C5 /* Main.storyboard */,
-				36D2B0B6274E8448001CD7C5 /* Assets.xcassets */,
 				36D2B0B8274E8448001CD7C5 /* LaunchScreen.storyboard */,
-				36D2B0BB274E8449001CD7C5 /* Info.plist */,
+				36D2B0C5274EC81E001CD7C5 /* Model */,
 			);
 			path = "MVC Calculator by Prof.Paul Hegarty";
+			sourceTree = "<group>";
+		};
+		36D2B0C1274E8450001CD7C5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				36D2B0AF274E8444001CD7C5 /* SceneDelegate.swift */,
+				36D2B0B6274E8448001CD7C5 /* Assets.xcassets */,
+				36D2B0AD274E8444001CD7C5 /* AppDelegate.swift */,
+				36D2B0BB274E8449001CD7C5 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		36D2B0C5274EC81E001CD7C5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				36D2B0C2274EC808001CD7C5 /* CalculatorBrain.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +159,7 @@
 			files = (
 				36D2B0B2274E8444001CD7C5 /* ViewController.swift in Sources */,
 				36D2B0AE274E8444001CD7C5 /* AppDelegate.swift in Sources */,
+				36D2B0C3274EC808001CD7C5 /* CalculatorBrain.swift in Sources */,
 				36D2B0B0274E8444001CD7C5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,7 +311,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CJ7JF497NG;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "MVC Calculator by Prof.Paul Hegarty/Info.plist";
+				INFOPLIST_FILE = "MVC Calculator by Prof.Paul Hegarty/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -319,7 +339,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CJ7JF497NG;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "MVC Calculator by Prof.Paul Hegarty/Info.plist";
+				INFOPLIST_FILE = "MVC Calculator by Prof.Paul Hegarty/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
