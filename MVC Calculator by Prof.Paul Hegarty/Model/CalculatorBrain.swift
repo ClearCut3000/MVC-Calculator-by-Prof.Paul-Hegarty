@@ -8,7 +8,7 @@
 import Foundation
 class CalculatorBrain{
 
-  private enum Op{
+  private enum Op: CustomStringConvertible {
     case Operand(Double)
     case UnaryOperation(String, (Double) -> Double)
     case BinaryOperation (String, (Double, Double) -> Double)
@@ -22,7 +22,6 @@ class CalculatorBrain{
           return symbol
         case .BinaryOperation(let symbol, _ ):
           return symbol
-
         }
       }
     }
@@ -30,7 +29,6 @@ class CalculatorBrain{
 
   /// Stack of operations about operands together
   private var opStack = [Op]()
-
 
   /// A class instance variable that contains known operations
   private var knownOps = [String : Op]()
@@ -42,7 +40,7 @@ class CalculatorBrain{
     func learnOp (op: Op) {
       knownOps[op.description] = op
     }
-    knownOps["×"] = Op.BinaryOperation("×", * )
+    learnOp(op: Op.BinaryOperation("×", * ))
     knownOps["+"] = Op.BinaryOperation("+", + )
     knownOps["-"] = Op.BinaryOperation("-") {$1 - $0}
     knownOps["÷"] = Op.BinaryOperation("÷") {$1 / $0}
@@ -100,7 +98,7 @@ class CalculatorBrain{
   /// - Returns: Optionat Double
   func evaluate() -> Double? {
     let (result, remainder) = evaluate(ops: opStack)
-    print("\(opStack) = \(String(describing: result)) with \(remainder) left over")
+    print("\(opStack) = \(result) with \(remainder) left over")
     return result
   }
 }
