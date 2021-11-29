@@ -34,13 +34,28 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="EcN-7x-vsH">
                                         <rect key="frame" x="0.0" y="91.666666666666657" width="358" height="83.333333333333343"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3p-4X-onZ">
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WdS-Ag-wKY">
                                                 <rect key="frame" x="0.0" y="0.0" width="358" height="83.333333333333329"/>
-                                                <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3p-4X-onZ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="262.66666666666669" height="83.333333333333329"/>
+                                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3S-QC-iVp">
+                                                        <rect key="frame" x="270.66666666666669" y="0.0" width="87.333333333333314" height="83.333333333333329"/>
+                                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="H3p-4X-onZ" firstAttribute="width" secondItem="M3S-QC-iVp" secondAttribute="width" multiplier="3" id="NLW-qh-V89"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="PwQ-aR-GH1">
@@ -48,25 +63,31 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYO-gD-8Tn">
                                                 <rect key="frame" x="0.0" y="0.0" width="65.333333333333329" height="83.666666666666671"/>
-                                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal">
+                                                <state key="normal" title="→M">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="setM:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bxZ-ay-x5U"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6aP-rE-43C">
                                                 <rect key="frame" x="73.333333333333329" y="0.0" width="64.999999999999986" height="83.666666666666671"/>
-                                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal">
+                                                <state key="normal" title="M">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="pushM:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tGk-Uu-Dtt"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDq-ia-uaC">
                                                 <rect key="frame" x="146.33333333333334" y="0.0" width="65.333333333333343" height="83.666666666666671"/>
-                                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Ran">
@@ -442,6 +463,7 @@
                     </view>
                     <connections>
                         <outlet property="display" destination="d79-vX-Ifd" id="uit-Qz-bpH"/>
+                        <outlet property="displayM" destination="M3S-QC-iVp" id="aeR-q4-qTz"/>
                         <outlet property="dot" destination="Usx-Is-9OX" id="qaT-x4-jhJ"/>
                         <outlet property="history" destination="H3p-4X-onZ" id="K9C-iq-Vwo"/>
                     </connections>

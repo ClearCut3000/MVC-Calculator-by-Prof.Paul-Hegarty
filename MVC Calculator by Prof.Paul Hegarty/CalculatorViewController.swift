@@ -17,10 +17,12 @@ class CalculatorViewController: UIViewController {
       dot.setTitle(decimalSeparator, for: UIControl.State.normal)
     }
   }
-
+  @IBOutlet weak var displayM: UILabel!
+  
 
   //MARK: - Properties
   private var brain = CalculatorBrain()
+  private var variableValues = [String: Double]()
   var userIsInTheMiddleOfTyping: Bool = false
   var displayValue: Double? {
     get {
@@ -33,13 +35,29 @@ class CalculatorViewController: UIViewController {
       if let value = newValue {
         display.text = formatter.string(from: NSNumber(value: value))
       }
-      if let description = brain.description {
-        history.text = description + (brain.resultIsPending ? " _" : " =")
-      }
+//      if let description = brain.description {
+//        history.text = description + (brain.resultIsPending ? " _" : " =")
+//      }
     }
   }
 
   let decimalSeparator = formatter.decimalSeparator ?? "."
+
+  var displayResult: (result: Double?,
+                      isPending: Bool,
+                      description: String,
+                      error: String?) = (nil, false," ", nil){
+      didSet {
+        switch displayResult {
+        case (nil, _, " ", nil): displayValue = 0
+        case (let result, _, _, nil): displayValue = result
+        case (_, _, _, let error): display.text = error!
+        }
+          history.text = displayResult.description != " " ?
+              displayResult.description + (displayResult.isPending ? " …" : " =") : " "
+          displayM.text = formatter.string(from: NSNumber(value:variableValues["M"] ?? 0))
+      }
+  }
 
   //MARK: - ViewController Lifecycle
   override func viewDidLoad() {
@@ -52,16 +70,24 @@ class CalculatorViewController: UIViewController {
   //MARK: - Actions
 
   @IBAction func clearAll(_ sender: UIButton) {
+    userIsInTheMiddleOfTyping = false
     brain.clear()
-    displayValue = 0
-    history.text = " "
+    variableValues = [:]
+    displayResult = brain.evaluate()
   }
 
   @IBAction func backspace(_ sender: UIButton) {
-    guard userIsInTheMiddleOfTyping && !display.text!.isEmpty else { return }
-    display.text = String(display.text!.dropLast())
-    if display.text!.isEmpty {
-      displayValue = 0
+    if userIsInTheMiddleOfTyping {
+      guard !display.text!.isEmpty else { return }
+      display.text = String(display.text!.dropLast())
+      if display.text!.isEmpty {
+        displayValue = 0
+        userIsInTheMiddleOfTyping = false
+        displayResult = brain.evaluate(using: variableValues)
+      }
+    } else {
+      brain.undo()
+      displayResult = brain.evaluate(using: variableValues)
     }
   }
 
@@ -78,23 +104,30 @@ class CalculatorViewController: UIViewController {
     }
   }
 
+  @IBAction func setM(_ sender: UIButton) {
+    userIsInTheMiddleOfTyping = false
+    let symbol = String((sender.currentTitle!).dropFirst())
+    variableValues[symbol] = displayValue
+    displayResult = brain.evaluate(using: variableValues)
+  }
+
+  @IBAction func pushM(_ sender: UIButton) {
+    brain.setOperand(variable: sender.currentTitle!)
+    displayResult = brain.evaluate(using: variableValues)
+  }
+
+
   @IBAction func performOperation(_ sender: UIButton) {
     if userIsInTheMiddleOfTyping {
-      if let value = displayValue{
-        brain.setOperand(value)
-      }
-      userIsInTheMiddleOfTyping = false
-    }
-    if let mathematicalSymbol = sender.currentTitle {
-      brain.performOperation(mathematicalSymbol)
-    }
-    if let result = brain.result {
-      displayValue = result
-    }
-
-    if let description = brain.description {
-      history.text = description + (brain.resultIsPending ? " ..." : " =")
-    }
+               if let value = displayValue{
+                   brain.setOperand(value)
+               }
+               userIsInTheMiddleOfTyping = false
+           }
+           if  let mathematicalSymbol = sender.currentTitle {
+               brain.performOperation(mathematicalSymbol)
+           }
+           displayResult = brain.evaluate(using: variableValues)
   }
 
 }
