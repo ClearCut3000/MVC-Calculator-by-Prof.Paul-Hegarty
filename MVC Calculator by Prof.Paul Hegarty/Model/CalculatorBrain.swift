@@ -75,6 +75,7 @@ struct CalculatorBrain{
       return descriptionFunction(descriptionOperandNew, secondOperand)
     }
 
+    /// error validating in binary operations
     func validate (with secondOperand: Double) -> String? {
       guard let validator = validator else { return nil }
       return validator (firstOperand, secondOperand)
