@@ -35,9 +35,6 @@ class CalculatorViewController: UIViewController {
       if let value = newValue {
         display.text = formatter.string(from: NSNumber(value: value))
       }
-//      if let description = brain.description {
-//        history.text = description + (brain.resultIsPending ? " _" : " =")
-//      }
     }
   }
 
